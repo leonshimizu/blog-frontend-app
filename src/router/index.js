@@ -6,8 +6,8 @@ import Test2 from '../views/Test2.vue'
 import Signup from '../views/Signup.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
-import BlogsIndex from '../views/BlogsIndex.vue'
 import PostsNew from '../views/PostsNew.vue'
+import PostsIndex from '../views/PostsIndex.vue'
 
 Vue.use(VueRouter)
 
@@ -51,14 +51,14 @@ const routes = [
     component: Logout
   },
   {
-    path: '/blogs',
-    name: 'blogs-index',
-    component: BlogsIndex
-  },
-  {
     path: '/posts/new',
     name: 'posts-new',
     component: PostsNew
+  },
+  {
+    path: '/posts',
+    name: 'posts-index',
+    component: PostsIndex
   }
 ]
 
