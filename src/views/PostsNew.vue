@@ -38,7 +38,7 @@
           .post("/posts", this.newPostParams)
           .then((response) => {
             console.log(response.data);
-            this.$router.push("/blogs");
+            this.$router.push("/posts");
           })
           .catch((error) => {
             this.errors = error.response.data.errors;
