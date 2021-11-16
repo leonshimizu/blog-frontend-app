@@ -6,8 +6,11 @@
         <p>ID: {{ post.id }}</p>
         <p>Title: {{ post.title }}</p>
         <!-- <a v-bind:href="`posts/${post.id}`"><img v-bind:src="post.image"></a> -->
-        <router-link v-bind:to="`posts/${post.id}`">
+        <p><router-link v-bind:to="`posts/${post.id}`">
           <img v-bind:src="post.image">
+        </router-link></p>
+        <router-link v-bind:to="`posts/${post.id}/edit`">
+          Edit Post
         </router-link>
         <!-- <button v-on:click="showModal(post)">Show More Info</button> -->
       </li>
