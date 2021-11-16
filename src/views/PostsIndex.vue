@@ -5,18 +5,21 @@
       <li v-for="post in posts">
         <p>ID: {{ post.id }}</p>
         <p>Title: {{ post.title }}</p>
-        <p><img v-bind:src="post.image"></p>
-        <button v-on:click="showModal(post)">Show More Info</button>
+        <!-- <a v-bind:href="`posts/${post.id}`"><img v-bind:src="post.image"></a> -->
+        <router-link v-bind:to="`posts/${post.id}`">
+          <img v-bind:src="post.image">
+        </router-link>
+        <!-- <button v-on:click="showModal(post)">Show More Info</button> -->
       </li>
     </ul>
-    <dialog id="show-modal">
+    <!-- <dialog id="show-modal">
       <form method="dialog">
         <p><b>Title:</b> {{ currentPost.title }}</p>
         <p><b>Body:</b> {{ currentPost.body }}</p>
         <p><b>Created:</b> {{ currentPost.created_at }}</p>
         <button>Close</button>
       </form>
-    </dialog>
+    </dialog> -->
   </div>
 </template>
 
@@ -45,11 +48,11 @@ import axios from 'axios';
             this.posts = response.data;
           })
       },
-      showModal: function(thePost) {
-        console.log("in the show modal");
-        document.querySelector("#show-modal").showModal()
-        this.currentPost = thePost;
-      }
+      // showModal: function(thePost) { // works but going to create a separate show page
+      //   console.log("in the show modal");
+      //   document.querySelector("#show-modal").showModal()
+      //   this.currentPost = thePost;
+      // }
     },
   };
 </script>

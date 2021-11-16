@@ -62,7 +62,7 @@ const routes = [
     component: PostsIndex
   },
   {
-    path: '/posts/1',
+    path: '/posts/:id',
     name: 'posts/show',
     component: PostsShow
   }

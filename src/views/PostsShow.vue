@@ -2,6 +2,7 @@
   <div class="home">
     <h1>{{ message }}</h1>
     <hr>
+    <p><b>ID: </b>{{ post.id }}</p>
     <p><b>Title: </b>{{ post.title }}</p>
     <p><b>Body: </b>{{ post.body }}</p>
     <p><img v-bind:src="post.image"></p>
@@ -26,8 +27,9 @@ import axios from 'axios'
     methods: {
       showFunction: function() {
         console.log("in the show function");
+        // console.log(this.$route.params.id) // gets whatever the params are in the url
         axios 
-          .get(`/posts/1`)
+          .get(`/posts/${this.$route.params.id}`)
           .then(response => {
             console.log(response.data);
             this.post = response.data;
