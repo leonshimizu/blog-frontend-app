@@ -7,6 +7,8 @@
     <p><b>Body: </b>{{ post.body }}</p>
     <p><img v-bind:src="post.image"></p>
     <p><b>Created: </b>{{ post.created_at }}</p>
+    <p><router-link v-bind:to="`${post.id}/edit`">Edit Post</router-link></p>
+    <button v-on:click="deleteFunction()">Delete Post</button>
   </div>
 </template>
 
@@ -34,7 +36,16 @@ import axios from 'axios'
             console.log(response.data);
             this.post = response.data;
           })
+      },
+      deleteFunction: function() {
+        console.log("in the delete function");
+        axios
+          .delete(`/posts/${this.$route.params.id}`)
+          .then(response => {
+            console.log(response.data);
+            this.$router.push("/posts");
+          })
       }
-    },
+    }
   };
 </script>

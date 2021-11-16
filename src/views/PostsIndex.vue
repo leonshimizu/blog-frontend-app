@@ -9,9 +9,6 @@
         <p><router-link v-bind:to="`posts/${post.id}`">
           <img v-bind:src="post.image">
         </router-link></p>
-        <router-link v-bind:to="`posts/${post.id}/edit`">
-          Edit Post
-        </router-link>
         <!-- <button v-on:click="showModal(post)">Show More Info</button> -->
       </li>
     </ul>
