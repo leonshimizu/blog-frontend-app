@@ -2,11 +2,13 @@
   <div class="show">
     <h1 id="showTitle">{{ message }}</h1>
     <hr>
-    <div id="showCard" class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+    <div id="showCard" class="card text-dark bg-light mb-3">
     <div class="card-header">{{ post.id }}</div>
       <div class="card-body">
       <h5 class="card-title">{{ post.title }}</h5>
       <p class="card-text">{{ post.body }}</p>
+      <p class="card-text"><img v-bind:src="post.image"></p>
+      <p class="card-text">{{ post.created }}</p>
       <p><button type="button" class="btn btn-outline-warning"><router-link v-bind:to="`${post.id}/edit`">Edit Post</router-link></button></p>
       <button type="button" class="btn btn-outline-danger" v-on:click="deleteFunction()">Delete Post</button>
       </div>
