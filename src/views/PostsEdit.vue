@@ -1,6 +1,24 @@
 <template>
   <div class="update">
+    <br>
     <form v-on:submit.prevent="submit()">
+      <h1 id="editPost">{{ message }}</h1>
+      <ul>
+        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+      </ul>
+      <div class="card">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><label>Title:</label>
+          <input type="text" v-model="editPostParams.title" /></li>
+          <li class="list-group-item"><label>Body:</label>
+          <input type="text" v-model="editPostParams.body" /></li>
+          <li class="list-group-item"><label>Image:</label>
+          <input type="text" v-model="editPostParams.image" /></li>
+        </ul>
+        <input type="submit" value="Submit" />
+      </div>
+    </form>
+    <!-- <form v-on:submit.prevent="submit()">
       <h1>Edit Blog</h1>
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
@@ -18,9 +36,16 @@
         <input type="text" v-model="editPostParams.image" />
       </div>
       <input type="submit" value="Submit" />
-    </form>
+    </form> -->
   </div>
 </template>
+
+<style>
+  #editPost {
+    color: aliceblue;
+    text-align: center;
+  }
+</style>
 
 <script>
   import axios from "axios";
@@ -29,7 +54,8 @@
     data: function () {
       return {
         editPostParams: {},
-        errors: []
+        errors: [],
+        message: "Edit Post:"
       };
     },
     methods: {
