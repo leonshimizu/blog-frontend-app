@@ -12,7 +12,9 @@
   </div>
 </template>
 
-<style></style>
+<style>
+  
+</style>
 
 <script>
 import axios from 'axios'

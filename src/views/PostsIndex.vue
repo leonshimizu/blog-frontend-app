@@ -1,29 +1,26 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
-    <ul>
-      <li v-for="post in posts">
-        <p>ID: {{ post.id }}</p>
-        <p>Title: {{ post.title }}</p>
-        <!-- <a v-bind:href="`posts/${post.id}`"><img v-bind:src="post.image"></a> -->
-        <p><router-link v-bind:to="`posts/${post.id}`">
-          <img v-bind:src="post.image">
-        </router-link></p>
-        <!-- <button v-on:click="showModal(post)">Show More Info</button> -->
-      </li>
-    </ul>
-    <!-- <dialog id="show-modal">
-      <form method="dialog">
-        <p><b>Title:</b> {{ currentPost.title }}</p>
-        <p><b>Body:</b> {{ currentPost.body }}</p>
-        <p><b>Created:</b> {{ currentPost.created_at }}</p>
-        <button>Close</button>
-      </form>
-    </dialog> -->
+    <h1 id="welcome">{{ message }}</h1>
+    <div class="card text-center">
+    <div class="card-header">
+      Featured
+    </div>
+    <div class="card-body" v-for="post in posts">
+      <h5 class="card-title">{{ post.title }}</h5>
+      <p class="card-text"><img v-bind:src="post.image"></p>
+      <a v-bind:href="`posts/${post.id}`" class="btn btn-primary">More Info</a>
+      <hr>
+    </div>
+  </div>
   </div>
 </template>
 
-<style></style>
+<style>
+  #welcome {
+    text-align: center;
+    color: aliceblue;
+  }
+</style>
 
 <script>
 import axios from 'axios';
