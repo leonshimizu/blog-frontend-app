@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="index">
     <h1 id="welcome">{{ message }}</h1>
     <div class="card text-center">
     <div class="card-header">

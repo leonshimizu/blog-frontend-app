@@ -1,19 +1,36 @@
 <template>
-  <div class="home">
-    <h1>{{ message }}</h1>
+  <div class="show">
+    <h1 id="showTitle">{{ message }}</h1>
     <hr>
-    <p><b>ID: </b>{{ post.id }}</p>
+    <div id="showCard" class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+    <div class="card-header">{{ post.id }}</div>
+      <div class="card-body">
+      <h5 class="card-title">{{ post.title }}</h5>
+      <p class="card-text">{{ post.body }}</p>
+      <p><button type="button" class="btn btn-outline-warning"><router-link v-bind:to="`${post.id}/edit`">Edit Post</router-link></button></p>
+      <button type="button" class="btn btn-outline-danger" v-on:click="deleteFunction()">Delete Post</button>
+      </div>
+    </div>
+    <!-- <p><b>ID: </b>{{ post.id }}</p>
     <p><b>Title: </b>{{ post.title }}</p>
     <p><b>Body: </b>{{ post.body }}</p>
     <p><img v-bind:src="post.image"></p>
     <p><b>Created: </b>{{ post.created_at }}</p>
     <p><router-link v-bind:to="`${post.id}/edit`">Edit Post</router-link></p>
-    <button v-on:click="deleteFunction()">Delete Post</button>
+    <button v-on:click="deleteFunction()">Delete Post</button> -->
   </div>
 </template>
 
 <style>
-  
+  .show {
+    text-align: center;
+  }
+  #showTitle {
+    color: aliceblue;
+  }
+  #showCard {
+    text-align: center;
+  }
 </style>
 
 <script>
