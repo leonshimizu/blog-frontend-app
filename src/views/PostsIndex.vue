@@ -1,12 +1,13 @@
 <template>
   <div class="index">
     <h1 id="welcome">{{ message }}</h1>
+    <p>Search: <input type="text" v-model="searchTerm"></p>
     <div class="card text-center">
     <div class="card-header">
       Featured
     </div>
-    <div class="card-body" v-for="post in posts">
-      <h5 class="card-title">{{ post.title | uppercase }}</h5>
+    <div class="card-body" v-for="post in filterBy(posts, searchTerm, 'title')">
+      <h5 class="card-title">{{ post.title }}</h5>
       <p class="card-text"><img v-bind:src="post.image"></p>
       <a v-bind:href="`posts/${post.id}`" class="btn btn-primary">More Info</a>
       <hr>
@@ -31,7 +32,8 @@ import axios from 'axios';
       return {
         message: "Welcome to the Blog!",
         posts: [],
-        currentPost: {}
+        currentPost: {},
+        searchTerm: ""
       };
     },
     created: function () {
