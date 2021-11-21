@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <h1 id="welcome">{{ message }}</h1>
-    <button v-on:click="flipSortOrder()">Flip Sort Order</button>
+    <button v-on:click="flipSortOrder()">Sort by ID</button>
     <p>Search: <input type="text" v-model="searchTerm" list="titles"></p>
     <datalist id="titles">
       <option v-for="post in posts">{{ post.title }}</option>
@@ -10,7 +10,7 @@
     <div class="card-header">
       Featured
     </div>
-    <div class="card-body" v-for="post in orderBy(filterBy(posts, searchTerm, 'title'), 'title', sortOrder)">
+    <div class="card-body" v-for="post in orderBy(filterBy(posts, searchTerm, 'title'), 'id', sortOrder)">
       <h5 class="card-title">{{ post.title }}</h5>
       <p class="card-text"><img v-bind:src="post.image"></p>
       <a v-bind:href="`posts/${post.id}`" class="btn btn-primary">More Info</a>
