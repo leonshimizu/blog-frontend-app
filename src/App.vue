@@ -35,6 +35,6 @@
 body {
   font-family: 'Times New Roman', Times, serif;
   color: aliceblue;
-  background-image: url('./assets/darkness.png');
+  /* background-image: url('./assets/darkness.png'); */
 }
 </style>

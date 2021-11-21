@@ -7,7 +7,7 @@
       </ul>
       <div>
         <label>Name:</label>
-        <input type="text" v-model="newUserParams.name" />
+        <input type="text" v-model="newUserParams.name" /> <small v-if="newUserParams.name.length > 0 && newUserParams.name.length <= 20">{{ newUserParams.name.length }}</small> <small v-if="newUserParams.name.length > 20" class="text-danger">Name is too long</small>
       </div>
       <div>
         <label>Email:</label>
@@ -32,7 +32,12 @@
   export default {
     data: function () {
       return {
-        newUserParams: {},
+        newUserParams: {
+          name: "",
+          email: "",
+          password: "",
+          password_confirmation: ""
+        },
         errors: []
       };
     },
