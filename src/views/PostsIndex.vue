@@ -1,6 +1,7 @@
 <template>
   <div class="index">
     <h1 id="welcome">{{ message }}</h1>
+    <button v-on:click="flipSortOrder()">Flip Sort Order</button>
     <p>Search: <input type="text" v-model="searchTerm" list="titles"></p>
     <datalist id="titles">
       <option v-for="post in posts">{{ post.title }}</option>
@@ -9,7 +10,8 @@
     <div class="card-header">
       Featured
     </div>
-    <div class="card-body" v-for="post in filterBy(posts, searchTerm, 'title')">
+    <!-- <div class="card-body" v-for="post in filterBy(posts, searchTerm, 'title')"> -->
+    <div class="card-body" v-for="post in orderBy(posts, 'title', sortOrder)">
       <h5 class="card-title">{{ post.title }}</h5>
       <p class="card-text"><img v-bind:src="post.image"></p>
       <a v-bind:href="`posts/${post.id}`" class="btn btn-primary">More Info</a>
@@ -36,7 +38,8 @@ import axios from 'axios';
         message: "Welcome to the Blog!",
         posts: [],
         currentPost: {},
-        searchTerm: ""
+        searchTerm: "",
+        sortOrder: 1
       };
     },
     created: function () {
@@ -52,6 +55,9 @@ import axios from 'axios';
             this.posts = response.data;
           })
       },
+      flipSortOrder: function() {
+        this.sortOrder = this.sortOrder * -1
+      }
       // showModal: function(thePost) { // works but going to create a separate show page
       //   console.log("in the show modal");
       //   document.querySelector("#show-modal").showModal()
