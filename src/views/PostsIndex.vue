@@ -1,7 +1,10 @@
 <template>
   <div class="index">
     <h1 id="welcome">{{ message }}</h1>
-    <p>Search: <input type="text" v-model="searchTerm"></p>
+    <p>Search: <input type="text" v-model="searchTerm" list="titles"></p>
+    <datalist id="titles">
+      <option v-for="post in posts">{{ post.title }}</option>
+    </datalist>
     <div class="card text-center">
     <div class="card-header">
       Featured
