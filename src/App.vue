@@ -27,6 +27,8 @@
     </nav>
     <div class="container">
       Logged in? {{ isLoggedIn() }}
+      <br>
+      User ID {{ getUserId() }}
       <router-view/>
     </div>
   </div>
@@ -54,6 +56,9 @@ body {
         } else {
           return false
         }
+      },
+      getUserId: function() {
+      return localStorage.getItem('user_id');
       }
     }
   };

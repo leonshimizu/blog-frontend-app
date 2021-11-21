@@ -9,8 +9,11 @@
       <p class="card-text">{{ post.body }}</p>
       <p class="card-text"><img v-bind:src="post.image"></p>
       <p class="card-text">{{ post.created }}</p>
-      <p><button type="button" class="btn btn-outline-warning"><router-link v-bind:to="`${post.id}/edit`">Edit Post</router-link></button></p>
-      <button type="button" class="btn btn-outline-danger" v-on:click="deleteFunction()">Delete Post</button>
+      <small>{{ post.user_id }} || {{ $parent.getUserId() }}</small>
+      <div v-if="post.user_id == $parent.getUserId()">
+        <p><button type="button" class="btn btn-outline-warning"><router-link v-bind:to="`${post.id}/edit`">Edit Post</router-link></button></p>
+        <button type="button" class="btn btn-outline-danger" v-on:click="deleteFunction()">Delete Post</button>
+      </div>
       </div>
     </div>
     <!-- <p><b>ID: </b>{{ post.id }}</p>
