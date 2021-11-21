@@ -16,9 +16,9 @@
             Authorization
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="/login">Sign In</a></li>
-            <li><a class="dropdown-item" href="/logout">Sign Out</a></li>
-            <li><a class="dropdown-item" href="signup">Sign Up</a></li>
+            <li v-if="!isLoggedIn()"><a class="dropdown-item" href="/login">Sign In</a></li>
+            <li v-if="isLoggedIn()"><a class="dropdown-item" href="/logout">Sign Out</a></li>
+            <li v-if="!isLoggedIn()"><a class="dropdown-item" href="signup">Sign Up</a></li>
           </ul>
         </li>
       </ul>
@@ -26,6 +26,7 @@
   </div>
     </nav>
     <div class="container">
+      Logged in? {{ isLoggedIn() }}
       <router-view/>
     </div>
   </div>
@@ -38,3 +39,22 @@ body {
   /* background-image: url('./assets/darkness.png'); */
 }
 </style>
+
+<script>
+  import axios from "axios";
+
+  export default {
+    created: function () {},
+    methods: {
+      isLoggedIn: function() {
+        console.log("is logged in?");
+        console.log(localStorage.getItem('jwt'));
+        if (localStorage.getItem('jwt')) {
+          return true
+        } else {
+          return false
+        }
+      }
+    }
+  };
+</script>
