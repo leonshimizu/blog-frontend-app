@@ -19,7 +19,7 @@
       </div>
       <div>
         <label>Password confirmation:</label>
-        <input type="password" v-model="newUserParams.password_confirmation" />
+        <input type="password" v-model="newUserParams.password_confirmation" /><small v-if="newUserParams.password !== newUserParams.password_confirmation" class="text-danger">Passwords must match</small>
       </div>
       <input type="submit" value="Submit" />
     </form>
