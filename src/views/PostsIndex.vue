@@ -10,8 +10,7 @@
     <div class="card-header">
       Featured
     </div>
-    <!-- <div class="card-body" v-for="post in filterBy(posts, searchTerm, 'title')"> -->
-    <div class="card-body" v-for="post in orderBy(posts, 'title', sortOrder)">
+    <div class="card-body" v-for="post in orderBy(filterBy(posts, searchTerm, 'title'), 'title', sortOrder)">
       <h5 class="card-title">{{ post.title }}</h5>
       <p class="card-text"><img v-bind:src="post.image"></p>
       <a v-bind:href="`posts/${post.id}`" class="btn btn-primary">More Info</a>
